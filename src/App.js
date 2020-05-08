@@ -17,11 +17,6 @@ function App() {
   //   console.log(food);
   // });
 
-  function handleClick() {
-    getData();
-
-
-  }
   async function getData() {
     const response = await fetch(`https://api.edamam.com/api/food-database/parser?ingr=${food}&app_id=${app_id}&app_key=${app_key}`);
     const data = await response.json();
@@ -35,19 +30,10 @@ function App() {
     
   }
 
-  function addTotals() {
-    {data.map(element => (
-      setCalories(calories + element.food.nutrients.ENERC_KCAL),
-      setProtein(protein + element.food.nutrients.PROCNT),
-      setFat(fat + element.food.nutrients.FAT)
-    ))}
-    
-  }
-
   return (
     <div className="App">
       <input className="search-bar" type="text" value={food} onChange={e => setFood(e.target.value)}></input>
-      <input className="search-button" type="button" onClick={() => handleClick()}></input>
+      <input className="search-button" type="button" onClick={() => getData()}></input>
       <h1 className="data">
         {data.map(element => (
           <Food label={element.food.label} image={element.food.image} calories={element.food.nutrients.ENERC_KCAL} protein={element.food.nutrients.PROCNT} fat={element.food.nutrients.FAT}/>
