@@ -2,7 +2,7 @@
     background-color: #282c34;
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 100px 800px;
+    /* grid-template-rows: 100px 800px; */
   }
 
 .FrontPage-text {
